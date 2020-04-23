@@ -11,6 +11,6 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
+        setContentView(R.layout.activity_details4);
     }
 }

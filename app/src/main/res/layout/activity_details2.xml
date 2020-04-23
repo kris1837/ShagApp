@@ -2,15 +2,43 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/uiBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/uiImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_weight"
+        android:background="#723F51B5"
+        android:layout_marginTop="24dp"
+        android:padding="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        />
 
-    <Button
+
+    <TextView
+        android:id="@+id/uiText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@id/uiImage"
+        android:text="Nice Detailed Text"
+        android:textColor="#000000"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/uiTextDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@id/uiText"
+        android:layout_toEndOf="@id/uiImage"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        />
+
 
 </RelativeLayout>
