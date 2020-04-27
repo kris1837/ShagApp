@@ -43,6 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     Log.i(TAG, "Success");
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("DATA", 1);
                     startActivity(intent);
                 } else {
                     Log.i(TAG, "Wrong");
