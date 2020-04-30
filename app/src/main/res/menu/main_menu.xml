@@ -13,4 +13,5 @@
         android:icon="@drawable/ic_attach_money_black_24dp"
         android:title="DoSomethingElse"
         app:showAsAction="always" />
+
 </menu>

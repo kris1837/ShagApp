@@ -2,9 +2,9 @@ package kz.sirius.myapplication;
 
 public class Item {
 
-    String title;
-    String text;
-    String picture;
+    private String title;
+    private String text;
+    private String picture;
 
     public Item(String title, String text, String picture) {
         this.title = title;

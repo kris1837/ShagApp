@@ -1,26 +1,40 @@
 package kz.sirius.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import kz.sirius.myapplication.adapter.MyListAdapter;
+import kz.sirius.myapplication.adapter.MyRecyclerAdapter;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Adapter;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private static final String TAG = "MainActivity";
+    private LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +52,79 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "OnCreate");
 
         ArrayList list = new ArrayList<Item>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 20; i++) {
             list.add(new Item("NiceTitle", "Description", ""));
         }
 
-        ListView uiList = findViewById(R.id.uiList);
-        MyListAdapter listAdapter = new MyListAdapter();
+        RecyclerView uiList = findViewById(R.id.uiList);
+        MyRecyclerAdapter listAdapter = new MyRecyclerAdapter();
         listAdapter.setContent(list);
         uiList.setAdapter(listAdapter);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        uiList.setLayoutManager(layoutManager);
 
+        Button uiScrollTo = findViewById(R.id.uiScrollTo);
+        uiScrollTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutManager.scrollToPositionWithOffset(0, 20);
+            }
+        });
+
+        Button uiToGallery = findViewById(R.id.uiToGallery);
+        uiToGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPermissionGranted()) {
+                    readFile();
+                }
+            }
+        });
+    }
+
+    private void readFile() {
+        File files[] = ContextCompat.getExternalFilesDirs(MainActivity.this, null);
+
+        Log.d("Files", "Size: " + files.length);
+        for (int i = 0; i < files.length; i++) {
+            Log.d("Files", "FileName:" + files[i].getPath());
+        }
+    }
+
+    private void openGallery(){
+        Intent getImageIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        getImageIntent.setType("image/*");
+        startActivityForResult(getImageIntent , 11);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 11) {
+            Uri fullPhotoUri = data.getData();
+            ImageView uiImageView = findViewById(R.id.uiImageView);
+            uiImageView.setImageURI(fullPhotoUri);
+        }
+    }
+
+    public boolean isPermissionGranted() {
+        String permissionArray[] = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    permissionArray,
+                    1);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

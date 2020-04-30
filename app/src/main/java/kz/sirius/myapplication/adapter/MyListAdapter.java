@@ -1,4 +1,4 @@
-package kz.sirius.myapplication;
+package kz.sirius.myapplication.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +8,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import kz.sirius.myapplication.Item;
+import kz.sirius.myapplication.R;
+
 public class MyListAdapter extends BaseAdapter {
 
     private ArrayList<Item> items = new ArrayList<>();
 
-    void setContent(ArrayList<Item> items) {
+    public void setContent(ArrayList<Item> items) {
         this.items = items;
         notifyDataSetChanged();
     }
@@ -35,7 +38,7 @@ public class MyListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_details2, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_my_adapter, parent, false);
         }
 
         Item item = items.get(position);
@@ -44,8 +47,8 @@ public class MyListAdapter extends BaseAdapter {
         TextView uiText = convertView.findViewById(R.id.uiText);
         TextView uiTextDetails = convertView.findViewById(R.id.uiTextDetails);
 
-        uiText.setText(item.title);
-        uiTextDetails.setText(item.text);
+        uiText.setText(item.getTitle());
+        uiTextDetails.setText(item.getText());
 
         return convertView;
     }
