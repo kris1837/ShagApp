@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import kz.sirius.myapplication.Item;
+import kz.sirius.myapplication.entity.Item;
 import kz.sirius.myapplication.R;
 
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>{

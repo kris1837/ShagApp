@@ -15,31 +15,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:theme="@style/AppThemeGreen"
             >
         </activity>
 
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".activity.RegistrationActivity"
             android:theme="@style/AppThemeGreen"
             >
 
         </activity>
 
-        <activity android:name=".DetailsActivity">
-
-        </activity>
-
-        <activity android:name=".ImageActivity">
-        </activity>
-
-        <activity android:name=".DataBaseUsersActivity">
+        <activity android:name=".activity.DetailsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.ImageActivity">
+        </activity>
+
+        <activity android:name=".activity.DataBaseUsersActivity">
+
         </activity>
     </application>
 

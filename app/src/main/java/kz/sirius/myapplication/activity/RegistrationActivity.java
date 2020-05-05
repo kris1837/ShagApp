@@ -1,4 +1,4 @@
-package kz.sirius.myapplication;
+package kz.sirius.myapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import kz.sirius.myapplication.R;
+import kz.sirius.myapplication.activity.MainActivity;
 
 public class RegistrationActivity extends AppCompatActivity {
 

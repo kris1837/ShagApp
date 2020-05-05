@@ -1,4 +1,4 @@
-package kz.sirius.myapplication;
+package kz.sirius.myapplication.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +7,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.database.DataBaseProvider;
 import kz.sirius.myapplication.database.User;
 

@@ -1,4 +1,4 @@
-package kz.sirius.myapplication;
+package kz.sirius.myapplication.service;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import kz.sirius.myapplication.activity.ImageActivity;
 
 public class MyAsyncTask extends AsyncTask<String, Integer, Bitmap> {
 

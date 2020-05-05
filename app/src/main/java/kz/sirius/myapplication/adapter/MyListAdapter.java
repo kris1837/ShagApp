@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import kz.sirius.myapplication.Item;
+import kz.sirius.myapplication.entity.Item;
 import kz.sirius.myapplication.R;
 
 public class MyListAdapter extends BaseAdapter {

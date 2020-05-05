@@ -1,6 +1,7 @@
-package kz.sirius.myapplication;
+package kz.sirius.myapplication.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -8,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import kz.sirius.myapplication.service.MyAsyncTask;
+import kz.sirius.myapplication.R;
+import kz.sirius.myapplication.database.User;
 
 public class ImageActivity extends AppCompatActivity {
 
@@ -27,6 +31,12 @@ public class ImageActivity extends AppCompatActivity {
         sharedPref.edit()
                 .putString("LINK", "https://media.kasperskydaily.com/wp-content/uploads/sites/92/2019/12/09084248/android-device-identifiers-featured.jpg")
                 .apply();
+
+        Intent intent = new Intent(this, DetailsActivity.class);
+        User user = new User("", "");
+        intent.putExtra("KEY", user);
+
+        user = (User) intent.getExtras().getSerializable("KEY");
     }
 
     @Override
