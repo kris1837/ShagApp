@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +18,15 @@ public class Fragment1 extends Fragment {
 
     public static final String TAG = "Fragment1";
 
+    private FragmentListener listener = null;
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         Log.d(TAG, "onAttach");
+        if (getActivity() instanceof FragmentListener) {
+            listener = (FragmentListener) context;
+        }
     }
 
     @Override
@@ -38,13 +44,17 @@ public class Fragment1 extends Fragment {
         return inflater.inflate(R.layout.fragment_one, container, false);
     }
 
-    public int getFragmentNumber() {
-        return 1;
-    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    public void setText(String text) {
-        TextView textView = getView().findViewById(R.id.textView);
-        textView.setText(text);
+        Button button = getView().findViewById(R.id.uiChangeText);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onChangeTextClicked();
+            }
+        });
     }
 
     @Override
@@ -93,5 +103,6 @@ public class Fragment1 extends Fragment {
     public void onDetach() {
         super.onDetach();
         Log.d(TAG, "onDetach");
+        listener = null;
     }
 }

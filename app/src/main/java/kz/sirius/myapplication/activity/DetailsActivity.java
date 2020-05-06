@@ -4,6 +4,7 @@ package kz.sirius.myapplication.activity;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -17,12 +18,17 @@ import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.adapter.TabAdapter;
 import kz.sirius.myapplication.fragment.Fragment1;
 import kz.sirius.myapplication.fragment.Fragment2;
+import kz.sirius.myapplication.fragment.FragmentListener;
 
 import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity implements FragmentListener {
 
     public static final String TAG = "DetailsActivity";
+
+    Fragment1 fragment;
+    Fragment2 fragment2;
+    Fragment1 fragment3;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,9 +37,9 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_with_fragment_two);
 
 
-        Fragment1 fragment = new Fragment1();
-        Fragment2 fragment2 = new Fragment2();
-        Fragment1 fragment3 = new Fragment1();
+        fragment = new Fragment1();
+        fragment2 = new Fragment2();
+        fragment3 = new Fragment1();
 
         TabLayout uiTabLayout = findViewById(R.id.uiTabLayout);
         ViewPager uiViewPager = findViewById(R.id.uiViewPager);
@@ -55,6 +61,11 @@ public class DetailsActivity extends AppCompatActivity {
 
         uiViewPager.setAdapter(adapter);
         uiTabLayout.setupWithViewPager(uiViewPager);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @Override
@@ -86,5 +97,11 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "OnDestroy");
+    }
+
+    @Override
+    public void onChangeTextClicked() {
+        Toast.makeText(this, "TextChangeClicked", Toast.LENGTH_LONG).show();
+        fragment2.setText("New text");
     }
 }
