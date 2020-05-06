@@ -1,6 +1,7 @@
 package kz.sirius.myapplication.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,10 +12,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import kz.sirius.myapplication.R;
+import kz.sirius.myapplication.entity.Item;
 
-public class Fragment1 extends Fragment {
+public class Fragment1 extends Fragment implements View.OnClickListener {
 
     public static final String TAG = "Fragment1";
 
@@ -33,6 +36,8 @@ public class Fragment1 extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
+
+        Item item = (Item) getArguments().getSerializable("Item");
     }
 
 
@@ -49,13 +54,45 @@ public class Fragment1 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button button = getView().findViewById(R.id.uiChangeText);
-        button.setOnClickListener(new View.OnClickListener() {
+       /* View.OnClickListener listenerButton = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.onChangeTextClicked();
             }
-        });
+        };
+
+        button.setOnClickListener(listenerButton);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
+
+        button.setOnClickListener(this);
+
     }
+
+    @Override
+    public void onClick(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        // Add the buttons
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+            }
+        });
+        builder.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
