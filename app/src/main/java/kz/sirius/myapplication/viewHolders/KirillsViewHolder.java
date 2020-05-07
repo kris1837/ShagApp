@@ -14,7 +14,7 @@ public class KirillsViewHolder extends RecyclerView.ViewHolder {
     public KirillsViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        uiNiceText = itemView.findViewById(R.id.uiNiceText);
+        uiNiceText = itemView.findViewById(R.id.uiHolderText);
     }
 
     /*public void bind(YourClass object) {
