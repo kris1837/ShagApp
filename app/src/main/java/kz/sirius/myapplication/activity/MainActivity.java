@@ -13,6 +13,8 @@ import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.adapter.MyRecyclerAdapter;
 import kz.sirius.myapplication.entity.UserParcel;
 import kz.sirius.myapplication.entity.UserSerializable;
+import kz.sirius.myapplication.entity.VladItem;
+import kz.sirius.myapplication.viewHolders.VladViewHolder;
 
 import android.Manifest;
 import android.content.Intent;
@@ -26,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             userFromRegSer = (UserSerializable) getIntent().getExtras().getSerializable("DATA_SERIALIZE");
             userFromRegParc = (UserParcel) getIntent().getExtras().getParcelable("DATA_PARCEL");
         }
-
+        
 
 
 
