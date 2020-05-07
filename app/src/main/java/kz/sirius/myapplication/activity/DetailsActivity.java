@@ -3,7 +3,6 @@ package kz.sirius.myapplication.activity;
 
 import android.os.Bundle;
 
-import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.adapter.TabAdapter;
-import kz.sirius.myapplication.entity.Item;
+import kz.sirius.myapplication.entity.LevsItem;
 import kz.sirius.myapplication.fragment.Fragment1;
 import kz.sirius.myapplication.fragment.Fragment2;
 import kz.sirius.myapplication.fragment.FragmentListener;
@@ -41,7 +40,7 @@ public class DetailsActivity extends AppCompatActivity implements FragmentListen
 
         fragment = new Fragment1();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("Item", new Item("", "", ""));
+        bundle.putSerializable("Item", new LevsItem("", "", ""));
         fragment.setArguments(bundle);
         fragment2 = new Fragment2();
         fragment3 = new Fragment1();
