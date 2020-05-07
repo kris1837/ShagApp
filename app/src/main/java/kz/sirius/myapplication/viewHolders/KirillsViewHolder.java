@@ -19,5 +19,6 @@ public class KirillsViewHolder extends RecyclerView.ViewHolder {
 
     /*public void bind(YourClass object) {
         uiNiceText.setText();
+
     }*/
 }

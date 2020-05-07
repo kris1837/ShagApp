@@ -21,8 +21,12 @@ public class LevsViewHolder extends RecyclerView.ViewHolder {
         uiIp = itemView.findViewById(R.id.uiIp);
     }
 
-    public void bind(LevsItem object) throws IOException {
-        object = new LevsItem("");
-        uiIp.setText("Your ip " + object.getIp());
+    public void bind(LevsItem object) {
+        try {
+            object = new LevsItem("");
+            uiIp.setText("Your ip " + object.getIp());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

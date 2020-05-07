@@ -21,6 +21,7 @@ public class AmirkhansViewHolder extends RecyclerView.ViewHolder {
 
         uiHeaderText = itemView.findViewById(R.id.uiHeaderText);
         uiContentText = itemView.findViewById(R.id.uiContentText);
+        image = itemView.findViewById(R.id.amirkhansImageView);
     }
 
     public void bind(AmirkhanItem object) {

@@ -9,14 +9,15 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import kz.sirius.myapplication.entity.Item;
 import kz.sirius.myapplication.entity.LevsItem;
 import kz.sirius.myapplication.R;
 
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>{
 
-    private ArrayList<LevsItem> items = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
 
-    public void setContent(ArrayList<LevsItem> items) {
+    public void setContent(ArrayList<Item> items) {
         this.items = items;
         notifyDataSetChanged();
     }

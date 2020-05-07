@@ -13,7 +13,7 @@ public class ViewHolderYernar extends RecyclerView.ViewHolder {
     private TextView txtName;
     private TextView txtDesc;
 
-    ViewHolderYernar(@NonNull View itemView) {
+    public ViewHolderYernar(@NonNull View itemView) {
         super(itemView);
         txtName = itemView.findViewById(R.id.txtName);
         txtDesc = itemView.findViewById(R.id.txtDesc);

@@ -8,14 +8,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import kz.sirius.myapplication.entity.Item;
 import kz.sirius.myapplication.entity.LevsItem;
 import kz.sirius.myapplication.R;
 
 public class MyListAdapter extends BaseAdapter {
 
-    private ArrayList<LevsItem> items = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
 
-    public void setContent(ArrayList<LevsItem> items) {
+    public void setContent(ArrayList<Item> items) {
         this.items = items;
         notifyDataSetChanged();
     }
@@ -26,7 +27,7 @@ public class MyListAdapter extends BaseAdapter {
     }
 
     @Override
-    public LevsItem getItem(int position) {
+    public Item getItem(int position) {
         return items.get(position);
     }
 
@@ -41,7 +42,7 @@ public class MyListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_my_adapter, parent, false);
         }
 
-        LevsItem item = items.get(position);
+        Item item = items.get(position);
 
         convertView.findViewById(R.id.uiImage);
         TextView uiText = convertView.findViewById(R.id.uiText);

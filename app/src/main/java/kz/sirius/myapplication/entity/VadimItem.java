@@ -6,6 +6,11 @@ public class VadimItem {
     String title;
     Timestamp date;
 
+    public VadimItem(String title, Timestamp date) {
+        this.title = title;
+        this.date = date;
+    }
+
     public String getTitle() {
         return title;
     }

@@ -10,7 +10,7 @@ import kz.sirius.myapplication.entity.VladItem;
 
 public class VladViewHolder extends RecyclerView.ViewHolder {
 
-    TextView uiVladNiceText;
+    public TextView uiVladNiceText;
 
     public VladViewHolder(@NonNull View itemView) {
         super(itemView);

@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import kz.sirius.myapplication.entity.Item;
 import kz.sirius.myapplication.entity.LevsItem;
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.adapter.MyRecyclerAdapter;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList list = new ArrayList<LevsItem>();
         for (int i = 0; i < 20; i++) {
-            list.add(new LevsItem("NiceTitle", "Description", ""));
+            list.add(new Item("NiceTitle", "Description", ""));
         }
 
         RecyclerView uiList = findViewById(R.id.uiList);
