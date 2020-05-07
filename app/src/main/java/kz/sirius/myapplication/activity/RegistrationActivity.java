@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.activity.MainActivity;
+import kz.sirius.myapplication.entity.UserParcel;
+import kz.sirius.myapplication.entity.UserSerializable;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -33,23 +35,22 @@ public class RegistrationActivity extends AppCompatActivity {
         uiPassword.setText("12345");
         Button uiBtn = findViewById(R.id.uiBtn);
 
-        uiBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login = uiLogin.getText().toString();
-                password = uiPassword.getText().toString();
+        uiBtn.setOnClickListener((v) -> {
+            login = uiLogin.getText().toString();
+            password = uiPassword.getText().toString();
 
-                Log.i(TAG, login + " " + password);
+            Log.i(TAG, login + " " + password);
 
-                if (login.equals(ourLogin) && password.equals(ourPassword)) {
-                    Log.i(TAG, "Success");
+            if (login.equals(ourLogin) && password.equals(ourPassword)) {
+                Log.i(TAG, "Success");
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("DATA", 1);
-                    startActivity(intent);
-                } else {
-                    Log.i(TAG, "Wrong");
-                }
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("DATA", 1);
+                intent.putExtra("DATA_PARCEL", new UserParcel(login, password));
+                intent.putExtra("DATA_SERIALIZE", new UserSerializable(login, password));
+                startActivity(intent);
+            } else {
+                Log.i(TAG, "Wrong");
             }
         });
     }

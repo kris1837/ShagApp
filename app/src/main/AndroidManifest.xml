@@ -24,15 +24,15 @@
             android:name=".activity.RegistrationActivity"
             android:theme="@style/AppThemeGreen"
             >
-
-        </activity>
-
-        <activity android:name=".activity.DetailsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.DetailsActivity">
+
         </activity>
 
         <activity android:name=".activity.ImageActivity">

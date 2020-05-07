@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import kz.sirius.myapplication.entity.Item;
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.adapter.MyRecyclerAdapter;
+import kz.sirius.myapplication.entity.UserParcel;
+import kz.sirius.myapplication.entity.UserSerializable;
 
 import android.Manifest;
 import android.content.Intent;
@@ -31,7 +33,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private int numberFromReg;
+    private UserParcel userFromRegParc;
+    private UserSerializable userFromRegSer;
     private static final String TAG = "MainActivity";
     private LinearLayoutManager layoutManager;
 
@@ -42,7 +46,15 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-        getIntent().getExtras().getInt("DATA");
+        if (getIntent().getExtras() != null) {
+
+            numberFromReg = getIntent().getExtras().getInt("DATA");
+            userFromRegSer = (UserSerializable) getIntent().getExtras().getSerializable("DATA_SERIALIZE");
+            userFromRegParc = (UserParcel) getIntent().getExtras().getParcelable("DATA_PARCEL");
+        }
+
+
+
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
