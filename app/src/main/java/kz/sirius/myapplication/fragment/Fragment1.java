@@ -8,14 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import kz.sirius.myapplication.R;
-import kz.sirius.myapplication.entity.Item;
+import kz.sirius.myapplication.entity.LevsItem;
 
 public class Fragment1 extends Fragment implements View.OnClickListener {
 
@@ -37,7 +36,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
 
-        Item item = (Item) getArguments().getSerializable("Item");
+        LevsItem item = (LevsItem) getArguments().getSerializable("Item");
     }
 
 
