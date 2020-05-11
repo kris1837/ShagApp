@@ -17,18 +17,18 @@ public class LevsItem implements Serializable {
         this.ip = ip;
     }
     public String getIp() throws IOException {
-        URL url = new URL("https://ipconfig.me/");
+        URL url = new URL("https://api6.ipify.org?format=json");
 
         URLConnection con = url.openConnection();
-        InputStream is =con.getInputStream();
+        InputStream is = con.getInputStream();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
         String line = null;
 
         while ((line = br.readLine()) != null) {
-            if(line.contains("<strong id=\"ip_address\">")){
-                ip = line.split(">")[1];
+            if (line.contains("ip")) {
+                ip = line.split("\"")[3];
             }
         }
 
