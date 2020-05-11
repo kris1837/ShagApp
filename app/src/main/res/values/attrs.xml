@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="showText" format="boolean" />
+        <attr name="colorBg" format="color"/>
+        <attr name="state" format="enum">
+            <enum name="phone" value="1"/>
+            <enum name="email" value="2"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

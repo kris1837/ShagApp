@@ -43,7 +43,6 @@ public class MyAsyncTask extends AsyncTask<String, Integer, Bitmap> {
     protected Bitmap doInBackground(String... strings) {
         Bitmap bitmap = null;
         InputStream in = null;
-        onProgressUpdate(0);
         try {
             // 1. Declare a URL Connection
             URL url = new URL(strings[0]);
@@ -53,11 +52,9 @@ public class MyAsyncTask extends AsyncTask<String, Integer, Bitmap> {
             in = conn.getInputStream();
             // 3. Download and decode the bitmap using BitmapFactory
             bitmap = BitmapFactory.decodeStream(in);
-            onProgressUpdate(1);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            onProgressUpdate(2);
             if (in != null)
                 try {
                     in.close();
