@@ -15,6 +15,16 @@
         custom:layout_constraintStart_toStartOf="parent"
         custom:layout_constraintTop_toTopOf="parent"
         custom:showText="true"
-        custom:state="email" />
+        custom:state="email" >
 
+    </kz.sirius.myapplication.CustomView>
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        custom:layout_constraintBottom_toBottomOf="@+id/uiCustomView"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

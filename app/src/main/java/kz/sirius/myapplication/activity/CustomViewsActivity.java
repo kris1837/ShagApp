@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
@@ -14,6 +15,7 @@ import java.lang.ref.WeakReference;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import kz.sirius.myapplication.CustomView;
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.entity.City;
@@ -28,6 +30,7 @@ public class CustomViewsActivity extends AppCompatActivity {
     Thread mThread;
     Thread mThreadYernar;
     TextView myTextView;
+    public ImageView imageView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,15 +39,15 @@ public class CustomViewsActivity extends AppCompatActivity {
 
         ViewGroup rootLayout = findViewById(android.R.id.content);
         rootLayout.addView(new CustomView(this));
-
-        mHandlerThread = new MyHandler(Looper.getMainLooper(), this);
+        imageView = findViewById(R.id.image_view);
+        /*mHandlerThread = new MyHandler(Looper.getMainLooper(), this);
 
         Runnable processJsonThread = new JsonProcessor(this, "city.list.json", mHandlerThread);
         mThread = new Thread(processJsonThread);
-        mThread.start();
+        mThread.start();*/
 
         mHandlerThreadYernar = new HandlerYernar(Looper.getMainLooper(), this);
-        Runnable procces = new ImageLoader(this, mHandlerThreadYernar, "https://pixabay.com/images/id-1271843/");
+        Runnable procces = new ImageLoader(this, mHandlerThreadYernar, "https://www.freepngimg.com/thumb/hair/21-women-hair-png-image.png");
         mThreadYernar = new Thread(procces);
         mThreadYernar.start();
     }
