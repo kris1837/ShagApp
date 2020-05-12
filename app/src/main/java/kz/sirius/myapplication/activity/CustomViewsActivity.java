@@ -17,12 +17,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import kz.sirius.myapplication.CustomView;
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.entity.City;
+import kz.sirius.myapplication.service.ImageLoader;
 import kz.sirius.myapplication.service.JsonProcessor;
+import kz.sirius.myapplication.utils.HandlerYernar;
 
 public class CustomViewsActivity extends AppCompatActivity {
 
     Handler mHandlerThread;
+    Handler mHandlerThreadYernar;
     Thread mThread;
+    Thread mThreadYernar;
     TextView myTextView;
 
     @Override
@@ -38,6 +42,11 @@ public class CustomViewsActivity extends AppCompatActivity {
         Runnable processJsonThread = new JsonProcessor(this, "city.list.json", mHandlerThread);
         mThread = new Thread(processJsonThread);
         mThread.start();
+
+        mHandlerThreadYernar = new HandlerYernar(Looper.getMainLooper(), this);
+        Runnable procces = new ImageLoader(this, mHandlerThreadYernar, "https://pixabay.com/images/id-1271843/");
+        mThreadYernar = new Thread(procces);
+        mThreadYernar.start();
     }
 
     @Override
