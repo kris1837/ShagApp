@@ -43,7 +43,7 @@
 
         </activity>
 
-        <activity android:name=".CustomViewsActivity">
+        <activity android:name=".activity.CustomViewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
