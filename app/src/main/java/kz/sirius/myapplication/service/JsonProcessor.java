@@ -9,7 +9,7 @@ import android.os.Parcelable;
 import java.util.List;
 
 
-import kz.sirius.myapplication.Utils;
+import kz.sirius.myapplication.utils.Utils;
 import kz.sirius.myapplication.entity.City;
 
 public class JsonProcessor implements Runnable {

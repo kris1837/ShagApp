@@ -1,4 +1,4 @@
-package kz.sirius.myapplication;
+package kz.sirius.myapplication.utils;
 
 import android.content.Context;
 import android.util.Log;
@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import kz.sirius.myapplication.SortCityByName;
 import kz.sirius.myapplication.entity.City;
 
 public class Utils {
