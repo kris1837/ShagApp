@@ -1,11 +1,16 @@
 package kz.sirius.myapplication.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +58,14 @@ public class RegistrationActivity extends AppCompatActivity {
                 Log.i(TAG, "Wrong");
             }
         });
+
+        SharedPreferences sharedPref = getSharedPreferences(
+                "Pref", Context.MODE_PRIVATE);
+
+        Set<String> time =  sharedPref.getStringSet("Pref", new HashSet<>());
+        for(String s : time) {
+            Log.d(TAG, s);
+        }
     }
 
     @Override

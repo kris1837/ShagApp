@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
@@ -28,6 +29,7 @@ public class CustomViewsActivity extends AppCompatActivity {
     Thread mThread;
     Thread mThreadYernar;
     TextView myTextView;
+    public ImageView imageView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,14 +39,18 @@ public class CustomViewsActivity extends AppCompatActivity {
         ViewGroup rootLayout = findViewById(android.R.id.content);
         rootLayout.addView(new CustomView(this));
 
+        imageView = findViewById(R.id.imageView);
+
         mHandlerThread = new MyHandler(Looper.getMainLooper(), this);
 
         Runnable processJsonThread = new JsonProcessor(this, "city.list.json", mHandlerThread);
         mThread = new Thread(processJsonThread);
         mThread.start();
 
+
+
         mHandlerThreadYernar = new HandlerYernar(Looper.getMainLooper(), this);
-        Runnable procces = new ImageLoader(this, mHandlerThreadYernar, "https://pixabay.com/images/id-1271843/");
+        Runnable procces = new ImageLoader(this, mHandlerThreadYernar, "https://www.freepngimg.com/thumb/hair/21-women-hair-png-image.png");
         mThreadYernar = new Thread(procces);
         mThreadYernar.start();
     }
@@ -68,12 +74,12 @@ public class CustomViewsActivity extends AppCompatActivity {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             City[] citylist = (City[]) msg.getData().getParcelableArray("Message");
-            for (int i = 0; i < citylist.length; i++) {
+            /*for (int i = 0; i < citylist.length; i++) {
                 Log.d("CustomViewsActivity", citylist[i].getName() + " " + citylist[i].getCountry());
-            }
-            if (weakReference.get() instanceof CustomViewsActivity) {
+            }*/
+            /*if (weakReference.get() instanceof CustomViewsActivity) {
                 ((CustomViewsActivity) weakReference.get()).myTextView.setText("");
-            }
+            }*/
         }
     }
 

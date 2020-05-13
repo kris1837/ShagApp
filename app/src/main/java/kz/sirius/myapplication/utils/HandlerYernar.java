@@ -30,7 +30,7 @@ public class HandlerYernar extends Handler {
         Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         Log.d("HandlerYernar", bitmap.getConfig().name());
         if (weakReference.get() instanceof CustomViewsActivity) {
-            //((CustomViewsActivity) weakReference.get()).myTextView.setText("");
+            ((CustomViewsActivity) weakReference.get()).imageView.setImageBitmap(bitmap);
             Log.d("HandlerYernar", "in weak reference get");
         }
     }

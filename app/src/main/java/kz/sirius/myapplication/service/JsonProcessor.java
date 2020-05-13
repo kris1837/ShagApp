@@ -33,4 +33,6 @@ public class JsonProcessor implements Runnable {
         message.setData(bundle);
         mHandlerThread.sendMessage(message);
     }
+
+
 }

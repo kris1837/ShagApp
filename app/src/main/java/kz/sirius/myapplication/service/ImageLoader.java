@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ImageView;
 
+
 import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
@@ -46,8 +47,6 @@ public class ImageLoader implements Runnable {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
-        bitmap.recycle();
-
         bundle.putByteArray("image", byteArray);
         mHandlerThread.sendMessage(message);
     }
