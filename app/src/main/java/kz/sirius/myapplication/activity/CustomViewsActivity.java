@@ -15,6 +15,7 @@ import java.lang.ref.WeakReference;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import kz.sirius.myapplication.CustomView;
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.entity.City;
@@ -38,16 +39,12 @@ public class CustomViewsActivity extends AppCompatActivity {
 
         ViewGroup rootLayout = findViewById(android.R.id.content);
         rootLayout.addView(new CustomView(this));
-
-        imageView = findViewById(R.id.imageView);
-
-        mHandlerThread = new MyHandler(Looper.getMainLooper(), this);
+        imageView = findViewById(R.id.image_view);
+        /*mHandlerThread = new MyHandler(Looper.getMainLooper(), this);
 
         Runnable processJsonThread = new JsonProcessor(this, "city.list.json", mHandlerThread);
         mThread = new Thread(processJsonThread);
-        mThread.start();
-
-
+        mThread.start();*/
 
         mHandlerThreadYernar = new HandlerYernar(Looper.getMainLooper(), this);
         Runnable procces = new ImageLoader(this, mHandlerThreadYernar, "https://www.freepngimg.com/thumb/hair/21-women-hair-png-image.png");
@@ -74,12 +71,12 @@ public class CustomViewsActivity extends AppCompatActivity {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             City[] citylist = (City[]) msg.getData().getParcelableArray("Message");
-            /*for (int i = 0; i < citylist.length; i++) {
+            for (int i = 0; i < citylist.length; i++) {
                 Log.d("CustomViewsActivity", citylist[i].getName() + " " + citylist[i].getCountry());
-            }*/
-            /*if (weakReference.get() instanceof CustomViewsActivity) {
+            }
+            if (weakReference.get() instanceof CustomViewsActivity) {
                 ((CustomViewsActivity) weakReference.get()).myTextView.setText("");
-            }*/
+            }
         }
     }
 

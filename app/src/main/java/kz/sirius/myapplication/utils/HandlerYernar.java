@@ -2,10 +2,12 @@ package kz.sirius.myapplication.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,8 +28,9 @@ public class HandlerYernar extends Handler {
     @Override
     public void handleMessage(@NonNull Message msg) {
         super.handleMessage(msg);
-        byte[] byteArray = msg.getData().getByteArray("image");
-        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        Bundle bundle = msg.getData();
+        byte[] byteArr = bundle.getByteArray("image");
+        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArr, 0, byteArr.length);
         Log.d("HandlerYernar", bitmap.getConfig().name());
         if (weakReference.get() instanceof CustomViewsActivity) {
             ((CustomViewsActivity) weakReference.get()).imageView.setImageBitmap(bitmap);
