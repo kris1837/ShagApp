@@ -1,7 +1,9 @@
 package kz.sirius.myapplication.activity;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import kz.sirius.myapplication.R;
+import kz.sirius.myapplication.service.JonnyWakerService;
 
 public class DisplayNotificationActivity extends AppCompatActivity {
 
@@ -34,7 +37,19 @@ public class DisplayNotificationActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button uiStartService = findViewById(R.id.uiStartService);
+        uiStartService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), JonnyWakerService.class);
+                startService(intent);
+            }
+        });
+
     }
+
+
 
     private void showNotification(String text, int notificationId) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
