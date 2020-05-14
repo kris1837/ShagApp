@@ -1,9 +1,10 @@
 package kz.sirius.myapplication.activity;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.service.JonnyWakerService;
 
@@ -20,6 +22,7 @@ public class DisplayNotificationActivity extends AppCompatActivity {
 
     public static final String CHANNEL_ID = "1";
     public static final int NOTIFICATION_ID = 100;
+    public Bitmap notificationBmp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,11 +32,37 @@ public class DisplayNotificationActivity extends AppCompatActivity {
         createNotificationChannel();
 
         Button uiSendNotificationBtn = findViewById(R.id.uiSendNotificationBtn);
+        Button btn_notification = findViewById(R.id.notification_yernar);
+
         uiSendNotificationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < 100; i++) {
                     showNotification("Notification number: " + String.valueOf(i), i);
+                }
+            }
+        });
+
+        if(notificationBmp == null){
+            notificationBmp = BitmapFactory.decodeResource(this.getResources(), R.drawable.notif_image);
+        }
+        btn_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                synchronized (this) {
+                    NotificationCompat.Builder builder =
+                            new NotificationCompat.Builder(getBaseContext(), CHANNEL_ID)
+                                    .setSmallIcon(R.drawable.ic_attach_money_black_24dp)
+                                    .setContentTitle("Yernar notify")
+                                    .setContentText("Look at this")
+                                    .setLargeIcon(notificationBmp)
+                                    .setStyle(new NotificationCompat.BigPictureStyle()
+                                            .bigPicture(notificationBmp)
+                                            .bigLargeIcon(null))
+                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getBaseContext());
+
+                    notificationManager.notify(8, builder.build());
                 }
             }
         });

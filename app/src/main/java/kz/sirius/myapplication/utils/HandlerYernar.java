@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.lang.ref.WeakReference;
 
 import kz.sirius.myapplication.activity.CustomViewsActivity;
+import kz.sirius.myapplication.activity.DisplayNotificationActivity;
 
 public class HandlerYernar extends Handler {
     private WeakReference<AppCompatActivity> weakReference;
@@ -32,7 +33,7 @@ public class HandlerYernar extends Handler {
         byte[] byteArr = bundle.getByteArray("image");
         Bitmap bitmap = BitmapFactory.decodeByteArray(byteArr, 0, byteArr.length);
         Log.d("HandlerYernar", bitmap.getConfig().name());
-        if (weakReference.get() instanceof CustomViewsActivity) {
+        if (weakReference.get() instanceof DisplayNotificationActivity) {
             ((CustomViewsActivity) weakReference.get()).imageView.setImageBitmap(bitmap);
             Log.d("HandlerYernar", "in weak reference get");
         }

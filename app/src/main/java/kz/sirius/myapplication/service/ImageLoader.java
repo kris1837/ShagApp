@@ -33,9 +33,7 @@ public class ImageLoader implements Runnable {
                     .load(imageUrl)
                     .submit()
                     .get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
         Message message = new Message();
