@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
 import kz.sirius.myapplication.R;
 
 public class JonnyWakerService extends Service {
@@ -25,20 +26,17 @@ public class JonnyWakerService extends Service {
         public ServiceHandler(Looper looper) {
             super(looper);
         }
+
         @Override
         public void handleMessage(Message msg) {
             // Normally we would do some work here, like download a file.
             // For our sample, we just sleep for 60 seconds.
             long endTime = System.currentTimeMillis() + 10 * 1000;
-            long oldTime = System.currentTimeMillis();
             while (System.currentTimeMillis() < endTime) {
                 synchronized (this) {
                     try {
-                        wait(endTime - System.currentTimeMillis());
-                        if (System.currentTimeMillis() - 1000 >= oldTime) {
-                            oldTime = System.currentTimeMillis();
-                            showNotification("Counter:" + String.valueOf(System.currentTimeMillis()), 1);
-                        }
+                        wait(1000);
+                        showNotification("Counter:" + String.valueOf(System.currentTimeMillis()), 1);
                     } catch (Exception e) {
                     }
                 }

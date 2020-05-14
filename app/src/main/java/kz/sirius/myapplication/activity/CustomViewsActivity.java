@@ -40,11 +40,11 @@ public class CustomViewsActivity extends AppCompatActivity {
         ViewGroup rootLayout = findViewById(android.R.id.content);
         rootLayout.addView(new CustomView(this));
         imageView = findViewById(R.id.image_view);
-        /*mHandlerThread = new MyHandler(Looper.getMainLooper(), this);
+        mHandlerThread = new MyHandler(Looper.getMainLooper(), this);
 
         Runnable processJsonThread = new JsonProcessor(this, "city.list.json", mHandlerThread);
         mThread = new Thread(processJsonThread);
-        mThread.start();*/
+        mThread.start();
 
         mHandlerThreadYernar = new HandlerYernar(Looper.getMainLooper(), this);
         Runnable procces = new ImageLoader(this, mHandlerThreadYernar, "https://www.freepngimg.com/thumb/hair/21-women-hair-png-image.png");
@@ -75,7 +75,7 @@ public class CustomViewsActivity extends AppCompatActivity {
                 Log.d("CustomViewsActivity", citylist[i].getName() + " " + citylist[i].getCountry());
             }
             if (weakReference.get() instanceof CustomViewsActivity) {
-                ((CustomViewsActivity) weakReference.get()).myTextView.setText("");
+                //((CustomViewsActivity) weakReference.get()).myTextView.setText("");
             }
         }
     }

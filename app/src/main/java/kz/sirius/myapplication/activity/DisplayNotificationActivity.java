@@ -49,8 +49,6 @@ public class DisplayNotificationActivity extends AppCompatActivity {
 
     }
 
-
-
     private void showNotification(String text, int notificationId) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_directions_walk_black_24dp)
