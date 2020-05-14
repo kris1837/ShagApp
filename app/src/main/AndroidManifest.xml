@@ -27,11 +27,6 @@
             android:name=".activity.RegistrationActivity"
             android:theme="@style/AppThemeGreen"
             >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".activity.DetailsActivity">
@@ -52,6 +47,14 @@
 
         <activity android:name=".activity.CustomViewsActivity">
 
+        </activity>
+
+        <activity android:name=".activity.DisplayNotificationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <receiver android:name=".service.BootReceiver" >

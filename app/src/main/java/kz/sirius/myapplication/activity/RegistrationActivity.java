@@ -9,8 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
+import java.util.Stack;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,10 +68,12 @@ public class RegistrationActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(
                 "Pref", Context.MODE_PRIVATE);
 
-        Set<String> time =  sharedPref.getStringSet("Pref", new HashSet<>());
+        Set<String> time =  sharedPref.getStringSet("RebootTime", new HashSet<>());
         for(String s : time) {
             Log.d(TAG, s);
         }
+
+
     }
 
     @Override
