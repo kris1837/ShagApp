@@ -11,6 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import kz.sirius.myapplication.R;
 import kz.sirius.myapplication.adapter.SensorsAdapter;
 
@@ -27,17 +31,18 @@ public class LightSensorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_light_sensor);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        RecyclerView uiList = findViewById(R.id.uiList);
-        SensorsAdapter adapter = new SensorsAdapter();
-        uiList.setAdapter(adapter);
-
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
+        GraphView graph = findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+        final long[] id = {0};
         sensorManager.registerListener(new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-
-                adapter.addContent(String.valueOf(event.values[0]) + " " + String.valueOf(event.values[1]) + " " + String.valueOf(event.values[2]));
+                id[0]++;
+                series.appendData(new DataPoint(id[0], event.values[0]), false, 1024);
+                graph.removeAllSeries();
+                graph.addSeries(series);
             }
 
             @Override
