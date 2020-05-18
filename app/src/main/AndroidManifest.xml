@@ -51,6 +51,10 @@
         </activity>
 
         <activity android:name=".activity.SensorsActivity">
+
+        </activity>
+
+        <activity android:name=".activity.MagnetometerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
