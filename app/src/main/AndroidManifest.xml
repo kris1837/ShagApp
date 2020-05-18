@@ -62,19 +62,23 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".sensors.LightSensorActivity">
+
+        </activity>
+
         <activity android:name=".activity.DisplayNotificationActivity">
 
         </activity>
 
-        <receiver android:name=".service.BootReceiver" >
+        <receiver android:name=".service.BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.BATTERY_LOW" />
-                <action android:name="android.intent.action.USER_UNLOCKED"/>
+                <action android:name="android.intent.action.USER_UNLOCKED" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".service.JonnyWakerService"/>
+        <service android:name=".service.JonnyWakerService" />
     </application>
 
 </manifest>
