@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Мое приложение</string>
     <string name="NiceText">Nice Text goes here</string>
+    <string name="channel_id" translatable="false">12</string>
 </resources>

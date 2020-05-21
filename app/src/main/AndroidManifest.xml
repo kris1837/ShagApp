@@ -9,10 +9,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_channel_id"
+        android:value="@string/channel_id" />
+
 
     <application
-        android:allowBackup="true"
         android:name=".MyApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -20,15 +24,11 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/AppThemeGreen"
-            >
-        </activity>
+            android:theme="@style/AppThemeGreen"></activity>
 
         <activity
             android:name=".activity.RegistrationActivity"
-            android:theme="@style/AppThemeGreen"
-            >
-        </activity>
+            android:theme="@style/AppThemeGreen"></activity>
 
         <activity android:name=".activity.DetailsActivity">
 
@@ -54,17 +54,11 @@
 
         </activity>
 
-        <activity android:name=".activity.MagnetometerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".sensors.LightSensorActivity">
 
         </activity>
+
+        <activity android:name=".sensors.MagnetometerActivity" />
 
         <activity android:name=".activity.DisplayNotificationActivity">
 
@@ -78,7 +72,27 @@
             </intent-filter>
         </receiver>
 
+        <service
+            android:name=".service.MyFCMService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <service android:name=".service.JonnyWakerService" />
+
+        <activity android:name=".sensors.GlobalSensorsActivity">
+
+        </activity>
+
+        <activity android:name=".activity.ChatActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

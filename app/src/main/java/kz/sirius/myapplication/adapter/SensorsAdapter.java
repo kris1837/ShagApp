@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -15,15 +16,15 @@ import kz.sirius.myapplication.R;
 
 public class SensorsAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<String> sensors = new ArrayList<>();
+    private LinkedList<String> sensors = new LinkedList<>();
 
-    public void setContent(List<String> sensors) {
+    public void setContent(LinkedList<String> sensors) {
         this.sensors = sensors;
         notifyDataSetChanged();
     }
 
     public void addContent(String content) {
-        sensors.add(content);
+        sensors.addFirst(content);
         notifyItemInserted(0);
     }
 

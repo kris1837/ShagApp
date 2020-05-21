@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "426498277423",
+    "firebase_url": "https://shagproject-2836c.firebaseio.com",
+    "project_id": "shagproject-2836c",
+    "storage_bucket": "shagproject-2836c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426498277423:android:942a5fc23c25dd5ae9c6da",
+        "android_client_info": {
+          "package_name": "kz.sirius.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426498277423-nat5vmrsn8h9olps6frqv2cimib2m4lq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr6r3OXYZ7pzSoYFb3wVxkyPz3NMzjXyI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426498277423-nat5vmrsn8h9olps6frqv2cimib2m4lq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

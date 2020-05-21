@@ -1,4 +1,4 @@
-package kz.sirius.myapplication.activity;
+package kz.sirius.myapplication.sensors;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -41,10 +41,8 @@ public class MagnetometerActivity extends AppCompatActivity implements SensorEve
         super.onResume();
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_GAME);
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME);
-
-
-
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -82,7 +80,6 @@ public class MagnetometerActivity extends AppCompatActivity implements SensorEve
                 anim.setFillAfter(true);
 
                 imageView.startAnimation(anim);
-
             }
         }
 

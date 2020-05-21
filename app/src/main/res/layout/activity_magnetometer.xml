@@ -9,7 +9,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:background="#FFFFFF"
-    tools:context="kz.sirius.myapplication.activity.MagnetometerActivity">
+    tools:context="kz.sirius.myapplication.sensors.MagnetometerActivity">
 
     <ImageView
         android:layout_width="300dp"
